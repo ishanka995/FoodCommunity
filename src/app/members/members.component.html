@@ -1,0 +1,156 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mansalva">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patua One">
+
+<div class="memberPanel">
+  <div class="container" id="Fcontainer">
+
+    <div id="Scontainer">
+
+      <!--     <div id="image"></div>-->
+      <!--      <div id="description" style="background-color: red;width: 50%;height: 100%;justify-content: right;float: right;"></div>-->
+
+      <div class="card mb-4" style="max-width: 1000px;">
+        <div class="row no-gutters">
+          <div class="col-md-8">
+            <img src="../../assets/images/loginImage-02.jpg" class="card-img" alt="..." style="width: 600px">
+          </div>
+          <div class="col-md-4" id="description">
+            <div class="card-body">
+              <h5 class="card-title" id="title">Be a part with Us</h5>
+              <hr style="background-color: #ffebee">
+
+              <p class="card-text" id="details">Do you like to experience most latest food recipies? Just jump to our
+                community.We warmly welcome you!</p>
+              <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-secondary" id="login" data-toggle="modal"
+                          data-target="#exampleModalCenter">Log in
+                  </button>
+                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">LogIn-Form</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body" id="modal-body">
+                          <form id="Loginform" (ngSubmit)="onSubmit()" #f="ngForm">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email"
+                                     class="form-control"
+                                     id="exampleInputEmail1"
+                                     name="LoginEmail"
+                                     ngModel
+                                     required
+                                     email
+                                     #emailInput="ngModel">
+                              <span class="help-block" *ngIf="emailInput.touched && !emailInput.valid">Please Enter Valid email!</span>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Password</label>
+                              <input type="password"
+                                     class="form-control"
+                                     id="exampleInputPassword1"
+                                     ngModel name="LoginPassword"
+                                     required
+                                     #password="ngModel"
+                              >
+                              <span class="help-block" *ngIf="!password.valid && password.touched">Please enter Password!</span>
+                            </div>
+                            <div class="form-group form-check">
+                              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                              <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                            </div>
+                            <button type="submit" class="btn btn-danger" [disabled]="!f.valid">Submit</button>
+                          </form>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p id="Or">or</p>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button type="button" class="btn btn-secondary" id="signup" data-toggle="modal"
+                            data-target="#exampleModalCenter2">Sign up
+                    </button>
+                    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle2">Sign-Up Form</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form [formGroup]="RegisterForm" id="registerForm" (ngSubmit)="RegSubmit()">
+                              <div class="row">
+<!--                                <div class="col">-->
+<!--                                  <label for="exampleInputPassword1">First Name</label>-->
+<!--                                  <input type="text" class="form-control" id="fname" formControlName="FName">-->
+<!--                                  <span class="help-Block" *ngIf="RegisterForm.get('FName').touched && !RegisterForm.get('FName').valid" pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/">Please Add a valid Name!</span>-->
+<!--                                </div>-->
+                                <div class="col">
+                                  <label for="exampleInputPassword1">First Name</label>
+                                  <input type="text" class="form-control" id="fname" formControlName="FName">
+                                  <span class="help-Block" *ngIf="!RegisterForm.get('FName').valid && RegisterForm.get('FName').touched">Please Add a valid Name!</span>
+                                </div>
+                                <div class="col">
+                                  <label for="exampleInputPassword1">Last Name</label>
+                                  <input type="text" class="form-control" id="lname" formControlName="LName">
+                                  <span class="help-Block" *ngIf="RegisterForm.get('LName').touched && !RegisterForm.get('LName').valid">Please Add a valid Name!</span>
+                                </div>
+                              </div>
+                              <div class="form-group" style="margin-top: 7px">
+                                <label for="signupEmail">Email Address</label>
+                                <input type="Email" class="form-control" id="SignupEmail" formControlName="signupEmail">
+                                <span class="help-Block" *ngIf="RegisterForm.get('signupEmail').touched && !RegisterForm.get('signupEmail').valid">Please Add a valid Email!</span>
+                              </div>
+                              <div class="form-group">
+                                <label for="MobileNo">Mobile Number</label>
+                                <input type="text" class="form-control" id="mobileNo" formControlName="MobileNo">
+                                <span class="help-Block" *ngIf="RegisterForm.get('MobileNo').touched && !RegisterForm.get('MobileNo').valid">Please Add a valid Mobile Number!</span>
+                              </div>
+                              <label>Select your Gender</label>
+                              <div *ngFor="let genders of gender" class="genderSelector">
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios5"
+                                         value="option1" checked>
+                                  <label class="form-check-label" for="gridRadios5">
+                                    {{genders}}
+                                  </label>
+                                </div>
+                              </div>
+                              <br>
+<!--
+                             </div>-->
+                              <p>
+                                <span class="help-Block" *ngIf="RegisterForm.touched && !RegisterForm.valid">Please Enter Valid Data!</span><br>
+
+                                <button type="submit" class="btn btn-danger" [disabled]="!RegisterForm.valid" >Submit</button>
+                              </p>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,105 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.memberPanel {
+  background-image: url("../../assets/images/desk-07.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
+  width: 100%;
+}
+
+#Fcontainer {
+  text-align: center;
+
+}
+
+#Scontainer {
+  display: inline-block;
+  width: 900px;
+  height: 400px;
+  margin-top: 125px;
+
+
+}
+
+#image {
+  width: 50%;
+  height: 100%;
+  background-image: url("../../assets/images/bg-6.jpg");
+}
+
+#description {
+  background-color: #ef5350;
+
+}
+
+#title {
+  font-family: Patua One;
+  font-size: 30px;
+  color: #ffebee;
+}
+
+#details {
+  font-size: 20px;
+  font-family: Mansalva;
+  color: #ffebee;
+}
+
+#login {
+  margin-left: 50px;
+  background-color: #ffebee;
+  font-family: Patua One;
+  color: #b71c1c;
+  border-radius: 25%;
+}
+
+#Or {
+  font-family: Patua One;
+  color: #ffebee;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-left: 2px;
+
+}
+
+#signup {
+  margin-left: 7px;
+  background-color: #ffebee;
+  font-family: Patua One;
+  color: #b71c1c;
+  border-radius: 25%;
+}
+
+#Loginform {
+  text-align: left;
+  font-family: Patua One;
+  color: #c62828;
+}
+#exampleModalCenterTitle{
+  font-family: Patua One;
+  font-weight: bold;
+}
+.modal-header{
+  background-color: #ef5350;
+  color: white;
+  border: 2px solid white;
+}
+input.ng-invalid.ng-touched{
+  border: solid 1px red;
+}
+input.ng-valid.ng-touched{
+  border: solid 2px green;
+}
+.genderSelector{
+  text-align: left;
+  margin-left: 200px;
+}
+#registerForm{
+  font-family:Patua One ;
+  color: #c62828;
+}
+#exampleModalCenterTitle2{
+  font-family: Patua One;
+  font-weight: bold;
+}

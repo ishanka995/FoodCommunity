@@ -1,0 +1,44 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.Basement{
+  background-image: url("../../assets/images/bg-6.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 700px;
+  width: 100%;
+}
+#baseContainer{
+  display: block;
+  top: 35%;
+  position: relative;
+  width: 700px;
+  float: right;
+}
+#subContainer{
+  text-align: right;
+}
+#logInBtn{
+  font-size: 20px;
+  font-family: Bree Serif;
+}
+#BoxTitle{
+  font-family: Acme;
+  font-size: 20px;
+  color: #E91E63;
+  background-color: #ffebee;
+}
+#BoxDescription{
+  font-family: Chilanka;
+  background-color: #ef5350;
+  color: white;
+
+}
+#MemberBtn{
+  background-color: white;
+  color: #b71c1c;
+  font-weight: bold;
+}
+#MemberBtn:hover{
+
+}
