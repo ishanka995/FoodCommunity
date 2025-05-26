@@ -1,23 +1,18 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chilanka">
-
-
-<div class="Basement">
-  <div class="container" id="baseContainer">
-    <div id="subContainer">
-<!--     <button type="button" class="btn btn-danger" id="logInBtn" routerLink="members">Just login and Chill with us!</button>-->
-      <div class="card text-center">
-        <div class="card-header" id="BoxTitle">
-          {{BoxTitle}}
-        </div>
-        <div class="card-body" id="BoxDescription">
-         <p>Hey there! Do u like to cook or eat? Simply this is place For you! World's biggest food recipe Community.</p>
-          <p>You can know how to prepare 1000+ foods with in one visit.Nevertheless You can Share your Amazing food recipe with Others. </p>
-          <p><button type="button" class="btn btn-danger"id="MemberBtn" routerLink="members">Visit Our Member Portal</button></p>
-        </div>
+<div class="Basement d-flex align-items-center justify-content-center text-center">
+  <div class="container">
+    <div class="card shadow-lg mx-auto" style="max-width: 700px;">
+      <div class="card-header" id="BoxTitle">
+        {{ BoxTitle }}
+      </div>
+      <div class="card-body" id="BoxDescription">
+        <p class="lead">Hey there! Do you like to cook or eat? This is the place for you! Welcome to the world's biggest food recipe community.</p>
+        <p>Discover how to prepare 1000+ dishes with a single visit. Moreover, you can share your amazing food recipes with others.</p>
+        <hr class="my-4">
+        <p>
+          <a class="btn btn-primary btn-lg" routerLink="/members" role="button" id="MemberBtn">Visit Our Member Portal</a>
+        </p>
       </div>
     </div>
   </div>
-
 </div>
 

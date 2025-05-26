@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { BaseComponent } from './base/base.component';
 import { MembersComponent } from './members/members.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BaseComponent,
-    MembersComponent
+    MembersComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

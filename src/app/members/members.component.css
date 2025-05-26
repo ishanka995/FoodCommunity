@@ -1,105 +1,126 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
+/* Removed @import for Bootstrap as it's global now */
 
 .memberPanel {
   background-image: url("../../assets/images/desk-07.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 700px;
+  min-height: calc(100vh - 70px); /* Adjust if navbar height is different */
+  display: flex; /* For centering the card */
+  align-items: center; /* For centering the card */
+  justify-content: center; /* For centering the card */
   width: 100%;
 }
 
-#Fcontainer {
-  text-align: center;
-
-}
-
-#Scontainer {
-  display: inline-block;
-  width: 900px;
-  height: 400px;
-  margin-top: 125px;
-
-
-}
-
-#image {
-  width: 50%;
-  height: 100%;
-  background-image: url("../../assets/images/bg-6.jpg");
-}
+/* #Fcontainer styling might be redundant if .container from Bootstrap is used with py-5 in HTML */
+/* #Scontainer styling might be redundant due to .card and Bootstrap grid/flex */
 
 #description {
-  background-color: #ef5350;
-
+  background-color: #ef5350; /* Original theme color */
+  color: #fff; /* Ensure text is readable */
+  /* padding is handled by card-body and flex utilities in HTML */
+  border-radius: 0 .25rem .25rem 0; /* Match card border radius if image is on left */
 }
 
 #title {
-  font-family: Patua One;
-  font-size: 30px;
-  color: #ffebee;
+  /* font-family: 'Patua One', cursive; /* Replaced by global Bree Serif */
+  font-size: 2rem; /* Responsive font size */
+  color: #ffebee; /* Original theme color */
 }
 
 #details {
-  font-size: 20px;
-  font-family: Mansalva;
-  color: #ffebee;
+  /* font-family: 'Mansalva', cursive; /* Replaced by global Bree Serif */
+  font-size: 1.1rem; /* Responsive font size */
+  color: #ffebee; /* Original theme color */
+  margin-bottom: 1.5rem;
 }
 
-#login {
-  margin-left: 50px;
-  background-color: #ffebee;
-  font-family: Patua One;
-  color: #b71c1c;
-  border-radius: 25%;
+/* Styling for custom buttons if not using Bootstrap's btn-primary, btn-info etc. */
+/* The HTML was updated to use btn-primary and btn-info, so these specific IDs might be for further customization or can be removed if not needed. */
+#loginBtn, #signupBtn {
+  /* font-family: 'Patua One', cursive; /* Replaced by global Bree Serif */
+  border-radius: 25px; /* Custom border radius */
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  /* Default Bootstrap button colors will apply if specific background/color are removed */
 }
+/* Example: Keep original custom button theme if desired over Bootstrap defaults */
+#loginBtn {
+  background-color: #ffebee;
+  color: #b71c1c;
+  border-color: #ffebee;
+}
+#loginBtn:hover {
+  background-color: #f8c6c6; /* Lighter shade for hover */
+  color: #b71c1c;
+  border-color: #f8c6c6;
+}
+
+#signupBtn {
+  background-color: #ffebee;
+  color: #b71c1c;
+  border-color: #ffebee;
+}
+#signupBtn:hover {
+  background-color: #f8c6c6; /* Lighter shade for hover */
+  color: #b71c1c;
+  border-color: #f8c6c6;
+}
+
 
 #Or {
-  font-family: Patua One;
-  color: #ffebee;
-  font-size: 15px;
-  margin-top: 10px;
-  margin-left: 2px;
-
-}
-
-#signup {
-  margin-left: 7px;
-  background-color: #ffebee;
-  font-family: Patua One;
-  color: #b71c1c;
-  border-radius: 25%;
-}
-
-#Loginform {
-  text-align: left;
-  font-family: Patua One;
-  color: #c62828;
-}
-#exampleModalCenterTitle{
-  font-family: Patua One;
+  /* font-family: 'Patua One', cursive; /* Replaced by global Bree Serif */
+  color: #ffebee; /* Original theme color */
+  font-size: 1rem;
   font-weight: bold;
 }
-.modal-header{
-  background-color: #ef5350;
+
+/* Modal Styling - Standardized */
+.modal-header {
+  background-color: #ef5350; /* Original theme color for consistency */
   color: white;
-  border: 2px solid white;
+  border-bottom: none; /* Cleaner look */
 }
-input.ng-invalid.ng-touched{
-  border: solid 1px red;
-}
-input.ng-valid.ng-touched{
-  border: solid 2px green;
-}
-.genderSelector{
-  text-align: left;
-  margin-left: 200px;
-}
-#registerForm{
-  font-family:Patua One ;
-  color: #c62828;
-}
-#exampleModalCenterTitle2{
-  font-family: Patua One;
+
+/* If signup modal needs a different header, target its ID */
+/* #signupModal .modal-header { background-color: #anotherColor; } */
+
+.modal-title {
+  /* font-family: 'Patua One', cursive; /* Replaced by global Bree Serif */
   font-weight: bold;
 }
+
+/* Form input validation styling - relies on Angular's ng-touched, ng-invalid/ng-valid */
+/* These are more specific than Bootstrap's .is-invalid but achieve similar effect */
+.form-control.ng-invalid.ng-touched {
+  border-color: #dc3545; /* Bootstrap danger color */
+}
+.form-control.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control.ng-valid.ng-touched {
+  border-color: #28a745; /* Bootstrap success color */
+}
+.form-control.ng-valid.ng-touched:focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.help-block { /* Class used for validation messages in HTML */
+  font-size: 0.875em;
+  color: #dc3545; /* Danger color for errors */
+}
+
+/* General form text color within modals */
+#loginForm, #registerForm {
+  /* font-family: 'Patua One', cursive; /* Replaced by global Bree Serif */
+  color: #495057; /* Default Bootstrap text color for better readability */
+}
+
+.modal-body {
+  padding: 1.5rem; /* Standardized padding */
+}
+
+/* Removing styles that are either handled by Bootstrap, global styles, or are no longer used */
+/* #Fcontainer, #Scontainer, #image, .genderSelector, #Loginform, #registerForm specific font/color, #exampleModalCenterTitle, #exampleModalCenterTitle2 */
+/* input.ng-invalid.ng-touched, input.ng-valid.ng-touched (covered by .form-control versions) */

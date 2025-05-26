@@ -1,0 +1,19 @@
+<div class="container profile-container py-5">
+  <div class="card shadow-sm mx-auto" style="max-width: 500px;">
+    <div class="card-body text-center">
+      <div *ngIf="currentUser; else notLoggedIn">
+        <h2 class="card-title mb-3">Welcome, {{ currentUser.FName }} {{ currentUser.LName }}!</h2>
+        <p class="card-text"><strong>Email:</strong> {{ currentUser.signupEmail }}</p>
+        <!-- Add more user details here if available. For example: -->
+        <!-- <p class="card-text"><strong>Mobile:</strong> {{ currentUser.MobileNo }}</p> -->
+        <!-- <p class="card-text"><strong>Gender:</strong> {{ currentUser.Gender }}</p> -->
+        <hr class="my-4">
+        <button class="btn btn-danger btn-block" (click)="logout()">Logout</button>
+      </div>
+      <ng-template #notLoggedIn>
+        <h4 class="card-title">Access Denied</h4>
+        <p class="card-text">You are not logged in. Please <a routerLink="/members">login</a> to view your profile.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

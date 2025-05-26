@@ -1,6 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-
-import {FormArray, FormControl, FormGroup, NgForm, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router'; // Import Router
 
 
 @Component({
@@ -9,16 +9,24 @@ import {FormArray, FormControl, FormGroup, NgForm, Validators} from '@angular/fo
   styleUrls: ['./members.component.css']
 })
 export class MembersComponent implements OnInit {
-  // @ts-ignore
-  @ViewChild('f') signUpform: NgForm;
   gender = ['Male', 'Female'];
   RegisterForm: FormGroup;
+  loginForm: FormGroup;
+  loginError: string | null = null;
+  loginSuccess: string | null = null;
+  registrationError: string | null = null;
+  registrationSuccess: string | null = null;
   userNameValidation = /[a-zA-Z]{3,10}/;
   MobileValidation = /[0-9]{10}/;
-  constructor() {
+  constructor(private router: Router) { // Inject in constructor
   }
 
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      loginEmail: new FormControl(null, [Validators.required, Validators.email]),
+      loginPassword: new FormControl(null, [Validators.required])
+    });
+
     this.RegisterForm = new FormGroup({
       FName: new FormControl(null, [
           Validators.required,
@@ -35,6 +43,7 @@ export class MembersComponent implements OnInit {
           Validators.email,
         ]
       ),
+      password: new FormControl(null, Validators.required),
       MobileNo: new FormControl('', [
         Validators.required,
         this.MobileNumberValidation.bind(this)
@@ -44,13 +53,49 @@ export class MembersComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(this.signUpform);
-    this.signUpform.reset();
+  onLoginSubmit() {
+    this.loginError = null;
+    this.loginSuccess = null;
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const foundUser = users.find(
+      (user: any) => user.signupEmail === this.loginForm.value.loginEmail && user.password === this.loginForm.value.loginPassword
+    );
+
+    if (foundUser) {
+      localStorage.setItem('activeUser', JSON.stringify(foundUser));
+      this.loginSuccess = 'Login successful! Redirecting...';
+      this.router.navigate(['/profile']);
+    } else {
+      this.loginError = 'Invalid email or password.';
+    }
+    this.loginForm.reset();
   }
 
   RegSubmit() {
-    console.log(this.RegisterForm);
+    this.registrationError = null;
+    this.registrationSuccess = null;
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const existingUser = users.find((user: any) => user.signupEmail === this.RegisterForm.value.signupEmail);
+
+    if (existingUser) {
+      this.registrationError = 'Email already exists. Please try a different email.';
+    } else {
+      const newUser = {
+        FName: this.RegisterForm.value.FName,
+        LName: this.RegisterForm.value.LName,
+        signupEmail: this.RegisterForm.value.signupEmail,
+        password: this.RegisterForm.value.password, // Ensure this is added to the form
+        MobileNo: this.RegisterForm.value.MobileNo,
+        Gender: this.RegisterForm.value.Gender
+        // Not storing hobbies for simplicity, but you could if needed
+      };
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+      this.registrationSuccess = 'Registration successful! You can now log in.';
+      this.RegisterForm.reset();
+      this.RegisterForm.patchValue({ Gender: 'Male' });
+      (this.RegisterForm.get('hobbies') as FormArray).clear();
+    }
   }
 
   AddHobbies() {

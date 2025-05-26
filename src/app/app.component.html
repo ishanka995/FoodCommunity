@@ -3,53 +3,38 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bree Serif">
 </head>
 <body>
-<!--Navigation bar starts here-->
-<div class="fixed-top">
-  <div class="row">
-    <div class="col">
-      <nav class="navbar">
-        <a class="navbar-brand" href="#">
-          <img src="../assets/images/logo-03.png" width="200px" alt="This is company Logo">
-        </a>
-      </nav>
-    </div>
-    <div class="col">
-      <nav class="nav justify-content-end">
-        <nav class="navbar navbar-expand-lg navbar-light" id="navbarTags">
-          <a class="navbar-brand" href="#"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item" >
-                <a class="nav-link" routerLink="" id="Home" routerLinkActive="active">Home</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" routerLink="members" id="Members" routerLinkActive="active">Members</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link"  id="About" routerLinkActive="active">About</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link"  id="ContactUs" routerLinkActive="active">Contact Us</a>
-              </li>
-
-            </ul>
-          </div>
-        </nav>
-      </nav>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" routerLink="/">
+    <img src="../assets/images/logo-03.png" width="150px" alt="Company Logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/members">Members</a>
+      </li>
+      <li class="nav-item" *ngIf="isUserLoggedIn" routerLinkActive="active">
+        <a class="nav-link" routerLink="/profile">Profile</a>
+      </li>
+      <!-- Removed About and Contact Us for now as they are not part of this task -->
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item" *ngIf="isUserLoggedIn">
+        <button class="btn btn-link nav-link" (click)="logout()">Logout</button>
+      </li>
+    </ul>
   </div>
-</div>
-
-<!--navbar ends here-->
+</nav>
 
 <!--common routerOutLet start Here-->
-<div class="BasicDiv">
+<div class="BasicDiv"> 
   <router-outlet></router-outlet>
 </div>
-
 <!--common routerOutLet ends Here-->
 
 </body>
